@@ -7,6 +7,25 @@ import java.sql.*;
 
 public class ReservaDAO {
 
+    public ReservaDAO() {
+        crearTablaSiNoExiste();
+    }
+
+    private void crearTablaSiNoExiste() {
+        String sql = "CREATE TABLE IF NOT EXISTS reservas (" +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "fecha DATE NOT NULL, " +
+                "estado TEXT NOT NULL, " +
+                "usuario_id INTEGER NOT NULL, " +
+                "FOREIGN KEY (usuario_id) REFERENCES usuarios(id))";
+        try (Connection conn = DBConnection.getConnection();
+             Statement stmt = conn.createStatement()) {
+            stmt.execute(sql);
+        } catch (SQLException e) {
+            System.out.println("Error al crear tabla reservas: " + e.getMessage());
+        }
+    }
+
     public void crear(Reserva reserva) throws SQLException {
         Connection conn = DBConnection.getConnection();
         String sql = "INSERT INTO reservas (fecha, estado, usuario_id) VALUES (?, ?, ?)";
