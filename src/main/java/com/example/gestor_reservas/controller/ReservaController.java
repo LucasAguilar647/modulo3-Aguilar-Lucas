@@ -1,4 +1,4 @@
-package com.example.gestor_reservas.controllers;
+package com.example.gestor_reservas.controller;
 
 import com.example.gestor_reservas.entities.Reserva;
 import org.springframework.http.HttpStatus;
