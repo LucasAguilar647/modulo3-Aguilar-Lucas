@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
 
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/reservas")
 public class ReservaController {
